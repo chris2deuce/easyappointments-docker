@@ -52,7 +52,7 @@ The application is designed to be flexible enough so that it can handle any ente
 * Working plan and booking rules.
 * Google Calendar synchronization.
 * Email notifications system.
-* Self hosted installation.
+* Self-hosted installation.
 * Translated user interface.
 * User community support. 
 
@@ -89,6 +89,17 @@ services:
       - DB_NAME=easyappointments
       - DB_USERNAME=root
       - DB_PASSWORD=secret
+      - MAIL_PROTOCOL=mail
+      - MAIL_SMTP_DEBUG=0
+      - MAIL_SMTP_AUTH=0
+      - MAIL_SMTP_HOST=smtp.example.org
+      - MAIL_SMTP_USER=
+      - MAIL_SMTP_PASS=
+      - MAIL_SMTP_CRYPTO=tls
+      - MAIL_SMTP_PORT=587
+      - MAIL_FROM_ADDRESS=info@example.org
+      - MAIL_FROM_NAME=Example
+      - MAIL_REPLY_TO_ADDRESS=info@example.org
     volumes:
       - easyappointments:/var/www/html
     
@@ -107,20 +118,21 @@ volumes:
 
 ```
 
-## SMTP 
+## SMTP Configuration
 
-You can use the following SMTP environment variables 
+You can use the following MAIL environment variables 
 
-- SMTP_HOST="smtp.example.org"
-- SMTP_PORT="587"
-- SMTP_AUTH="1"
-- SMTP_USERNAME=""
-- SMTP_PASSWORD=""
-- SMTP_FROM_ADDRESS="info@example.org"
-- SMTP_FROM_NAME="Example"
-- SMTP_REPLY_TO_ADDRESS="info@example.org"
-- SMTP_PROTOCOL="tls"
-- SMTP_TLS="YES"
+- MAIL_PROTOCOL=smtp
+- MAIL_SMTP_DEBUG=0 // or "1"
+- MAIL_SMTP_AUTH=0 // or "1"
+- MAIL_SMTP_HOST=smtp.example.org
+- MAIL_SMTP_USER=
+- MAIL_SMTP_PASS=
+- MAIL_SMTP_CRYPTO=tls // or "ssl"
+- MAIL_SMTP_PORT=587
+- MAIL_FROM_ADDRESS=info@example.org
+- MAIL_FROM_NAME=Example
+- MAIL_REPLY_TO_ADDRESS=info@example.org
 
 ## License 
 

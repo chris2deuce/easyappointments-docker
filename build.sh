@@ -11,10 +11,10 @@
 # -----------------------------------------------------------------------------
 
 ##
-# Build a docker image for an Easy!Appointments release.
+# Build a docker image for an Easy!Appointments release with local architecture
 #
-# This script will create a new local Docker image for a tagged Easy!Appointments release, that has a zip package file
-# attached to it on Github (see https://github.com/alextselegidis/easyappointments/releases).
+# This script will create a new local Docker image with the local architecture only. This is useful for testing
+# or using the image locally. For multiple architectures refer to the "multi-arch-build.sh" script.
 #
 # Usage:
 #
@@ -29,4 +29,4 @@ DEFAULT_VERSION=1.5.0
 
 VERSION="${1:-$DEFAULT_VERSION}"
 
-docker buildx build --platform linux/amd64,linux/arm64 -t alextselegidis/easyappointments:${VERSION} --build-arg VERSION=${VERSION} .
+docker build --tag alextselegidis/easyappointments:${VERSION} --build-arg VERSION=${VERSION} .
