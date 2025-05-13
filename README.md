@@ -10,10 +10,6 @@
 
 <br>
 
-> NOTICE: This repository is undergoing major changes, make sure you update your existing clones before working on new features.
-
-<br>
-
 <h4 align="center">
     A powerful Open Source Appointment Scheduler that can be installed on your server. 
 </h4>
