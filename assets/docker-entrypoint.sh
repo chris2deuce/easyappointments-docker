@@ -39,6 +39,7 @@ class Config {
 }
 EOF
 
+# Email Config
 
 cat <<EOF >/var/www/html/application/config/email.php
 <?php defined('BASEPATH') or exit('No direct script access allowed');
@@ -64,5 +65,17 @@ cat <<EOF >/var/www/html/application/config/email.php
 \$config['newline'] = "\r\n";
 EOF
 
+# Fixed BASE_URL value
+
+FILE=/var/www/html/application/config/config.php
+STRING="\$config['base_url'] = '${BASE_URL}';"
+
+#echo "\$config['base_url'] = '${BASE_URL}';" >> /var/www/html/application/config/config.php
+
+if [ "$(tail -n 1 "$FILE")" != "$STRING" ]; then
+    echo "$STRING" >> "$FILE"
+fi
+
+# Start Apache
 
 apache2-foreground
